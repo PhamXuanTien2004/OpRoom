@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OpRoom</string>
+    <string name="setting_header">SYSTEM SETTING</string>
+    <string name="setting_title">AIR CONDITIONER SYSTEM</string>
+</resources>

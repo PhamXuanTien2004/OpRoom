@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textView_valve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="500dp"
+        android:layout_height="100dp"
+        android:max="100"
+        android:min="0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonCancel_valve"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:textSize="24dp"
+            android:text="Hủy" />
+
+        <Button
+            android:id="@+id/buttonOK_valve"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:textSize="24dp"
+            android:layout_weight="1"
+            android:text="OK" />
+    </LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
