@@ -5,58 +5,61 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.NumberPicker
-import android.widget.TextView
 import androidx.fragment.app.DialogFragment
+import com.research.oproom.databinding.DialogUvSettingBinding
 
-class UVSetDialog(var uvTime: Int): DialogFragment() {
-    private lateinit var buttonCancel: Button
-    private lateinit var buttonOK: Button
-    lateinit var uvPicker: NumberPicker
+class UVSetDialog(var uvTime: Int = 10) : DialogFragment() {
 
-    public interface OnInputListener{
+    interface OnInputListener {
         fun sendUVTime(uvTime: Int)
     }
-    public lateinit var onInputListener: OnInputListener
+
+    var onInputListener: OnInputListener? = null
+    private var _binding: DialogUvSettingBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.dialog_uv_setting, container, false)
-        buttonCancel = view.findViewById(R.id.buttonCancel_UV)
-        buttonOK = view.findViewById(R.id.buttonOK_UV)
-        uvPicker = view.findViewById(R.id.uvPicker)
-        val dummy = view.findViewById<TextView>(R.id.textViewDummy)
-        uvPicker.textSize = dummy.textSize
-        uvPicker.maxValue = 20
-        uvPicker.minValue = 1
-        uvPicker.value = uvTime
-        uvPicker.selectionDividerHeight = 0
-        uvPicker.setOnValueChangedListener(object : NumberPicker.OnValueChangeListener{
-            override fun onValueChange(picker: NumberPicker?, oldVal: Int, newVal: Int) {
+    ): View {
+        _binding = DialogUvSettingBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            uvPicker.textSize = textViewDummy.textSize
+            uvPicker.minValue = 1
+            uvPicker.maxValue = 20
+            uvPicker.value = uvTime
+            uvPicker.selectionDividerHeight = 0
+            uvPicker.setOnValueChangedListener { _, _, newVal ->
                 uvTime = newVal
             }
-        })
-        buttonCancel.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View){
-                dialog?.dismiss()
+
+            buttonCancelUV.setOnClickListener {
+                dismiss()
             }
-        })
-        buttonOK.setOnClickListener(object  : View.OnClickListener{
-            override fun onClick(v: View?) {
-                onInputListener.sendUVTime(uvTime)
-                dialog?.dismiss()
+            buttonOKUV.setOnClickListener {
+                onInputListener?.sendUVTime(uvTime)
+                dismiss()
             }
-        })
-        return view
+        }
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        try {
-            onInputListener = activity as UVSetDialog.OnInputListener
-        }catch(e: ClassCastException){
+        if (context is OnInputListener) {
+            onInputListener = context
+        } else if (parentFragment is OnInputListener) {
+            onInputListener = parentFragment as OnInputListener
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -1,24 +1,14 @@
 package com.research.oproom
 
-class Post(private var id: Int, private var temperature: Float, private var humidity: Float) {
-    public fun getId(): Int{
-        return this.id
-    }
-    public fun getTemperature(): Float{
-        return this.temperature
-    }
-    public fun getHumidity(): Float{
-        return this.humidity
-    }
+import com.google.gson.annotations.SerializedName
 
-    public fun setId(id: Int){
-        this.id = id
-    }
-    public fun setTemperature(temperature: Float){
-        this.temperature = temperature
-    }
-    public fun setHumidity(humidity: Float){
-        this.humidity = humidity
-    }
+data class Post(
+    @SerializedName("id")
+    var id: Int = 1,
 
-}
+    @SerializedName("temperature")
+    var temperature: Float = 0f,
+
+    @SerializedName("humidity")
+    var humidity: Float = 0f
+)

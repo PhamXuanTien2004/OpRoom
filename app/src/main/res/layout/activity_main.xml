@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/imageButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="@drawable/page0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
         android:onClick="hideThatShit"
+        android:scaleType="centerCrop"
+        android:src="@drawable/page0v2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -20,9 +22,11 @@
 
     <ImageButton
         android:id="@+id/buttonLight1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="300dp"
+        android:layout_width="94dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="448dp"
+        android:layout_marginEnd="728dp"
+        android:layout_marginBottom="52dp"
         android:background="#00FFFFFF"
         android:onClick="onClick"
         android:scaleX="1.2"
@@ -30,39 +34,26 @@
         android:src="@drawable/light_off"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintEnd_toEndOf="@+id/imageButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/buttonLight2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="340dp"
+        android:layout_width="92dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="52dp"
         android:background="#00FFFFFF"
         android:onClick="onClick"
         android:scaleX="1.2"
         android:scaleY="1.2"
         android:src="@drawable/light_off"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
-
-    <ImageButton
-        android:id="@+id/buttonLightUV"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="590dp"
-        android:background="#00FFFFFF"
-        android:scaleX="1"
-        android:scaleY="1"
-        android:src="@drawable/uv_off"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.003"
+        app:layout_constraintStart_toEndOf="@+id/buttonLight1" />
 
     <Button
         android:id="@+id/button_go"
@@ -247,17 +238,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton_anUp" />
 
     <Button
-        android:id="@+id/button_uvSetting"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="345dp"
-        android:layout_marginBottom="35dp"
-        android:background="#00FFFFFF"
-        android:text="  "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
         android:id="@+id/buttonSave"
         android:layout_width="120dp"
         android:layout_height="100dp"
@@ -287,25 +267,41 @@
         android:id="@+id/textView_sensorTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="424dp"
+        android:layout_marginStart="308dp"
+        android:layout_marginTop="408dp"
+        android:layout_marginBottom="212dp"
         android:text="00.0"
         android:textColor="#FFFFFF"
-        android:textSize="96sp"
+        android:textSize="90sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_insulationResistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:text="00.0"
+        android:textColor="#FFFFFF"
+        android:textSize="90sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.658" />
 
     <TextView
         android:id="@+id/textView_sensorHum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="385dp"
+        android:layout_marginStart="68dp"
         android:text="00.0"
         android:textColor="#FFFFFF"
-        android:textSize="96sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_sensorTemp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView_sensorTemp" />
+        android:textSize="90sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/textView_sensorTemp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
 
     <TextView
         android:id="@+id/textView_sensorPres"
@@ -313,56 +309,61 @@
         android:layout_height="wrap_content"
         android:text="00"
         android:textColor="#FFFFFF"
-        android:textSize="96sp"
+        android:textSize="90sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.633"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView_sensorTemp" />
+        app:layout_constraintHorizontal_bias="0.712"
+        app:layout_constraintStart_toStartOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.667" />
 
     <ImageButton
         android:id="@+id/buttonSys"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="595dp"
+        android:layout_width="85dp"
+        android:layout_height="78dp"
         android:layout_marginTop="44dp"
         android:background="#00FFFFFF"
         android:onClick="onClick"
         android:scaleX="0.8"
         android:scaleY="0.8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageButton"
         app:srcCompat="@drawable/sys_off" />
 
     <TextView
         android:id="@+id/textViewFilter"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
+        android:layout_width="178dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="16dp"
         android:gravity="center_horizontal"
         android:text="Tốt"
         android:textColor="#FFFFFF"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/imageButton"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.645" />
 
     <ImageView
         android:id="@+id/alarm_heater"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="995dp"
-        android:layout_marginTop="595dp"
+        android:layout_width="79dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="736dp"
+        android:layout_marginTop="600dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/heater_ok" />
 
     <ImageView
         android:id="@+id/alarm_vent"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="1135dp"
-        android:layout_marginTop="585dp"
+        android:layout_width="89dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="876dp"
+        android:layout_marginTop="592dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/vent_ok" />

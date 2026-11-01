@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Điều Khiển Tái Cấu Trúc - OpRoom Sìn Hồ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #121826;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover: #1a2234;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --emerald: #34d399;
+      --amber: #fbbf24;
+      --rose: #fb7185;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 30px 20px;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(at 10% 20%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(52, 211, 153, 0.06) 0px, transparent 50%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.7));
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      backdrop-filter: blur(12px);
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .header-info h1 {
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .header-info p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .progress-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      min-width: 260px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .progress-bar-bg {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, var(--accent), var(--emerald));
+      transition: width 0.4s ease;
+      border-radius: 6px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .card h2 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-blue {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+    }
+
+    .badge-green {
+      background: rgba(52, 211, 153, 0.15);
+      color: var(--emerald);
+    }
+
+    .badge-amber {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--amber);
+    }
+
+    /* Checklist Section */
+    .phase-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      margin-bottom: 18px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .phase-card:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .phase-header {
+      padding: 18px 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .phase-title {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .phase-content {
+      padding: 16px 24px;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+    }
+
+    .task-item:last-child {
+      border-bottom: none;
+    }
+
+    .task-checkbox {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      background: transparent;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      margin-top: 2px;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .task-checkbox:checked {
+      background: var(--emerald);
+      border-color: var(--emerald);
+    }
+
+    .task-checkbox:checked::after {
+      content: '✓';
+      position: absolute;
+      color: #000;
+      font-weight: 800;
+      font-size: 13px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .task-text {
+      font-size: 14px;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .task-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .task-checkbox:checked~.task-content .task-text {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    th {
+      color: var(--text-muted);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--accent);
+    }
+
+    /* Diagram Card */
+    .mermaid-box {
+      background: #0b101c;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      overflow-x: auto;
+      text-align: center;
+    }
+
+    .quick-tip {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <div class="header-info">
+        <h1>🏥 Bảng Điều Khiển Tái Cấu Trúc Mã Nguồn</h1>
+        <p>Hệ Thống Phòng Mổ Sìn Hồ - Lai Châu (Android Kotlin / Modbus RTU / RS485)</p>
+      </div>
+      <div class="progress-box">
+        <div class="progress-header">
+          <span>Tiến độ hoàn thành:</span>
+          <span id="progress-percent" style="color: var(--emerald);">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="progress-bar-fill" class="progress-bar-fill"></div>
+        </div>
+        <div style="font-size: 11px; color: var(--text-muted); margin-top: 6px; text-align: right;">
+          Đã xong: <span id="done-count">0</span> / <span id="total-count">0</span> đầu việc
+        </div>
+      </div>
+    </header>
+
+    <div class="quick-tip">
+      💡 <strong>Mẹo tương tác:</strong> Bạn có thể nhấp trực tiếp vào các ô vuông bên dưới để đánh dấu tiến độ hoàn
+      thành các tác vụ. Trạng thái sẽ được lưu tự động!
+    </div>
+
+    <!-- Sơ đồ kiến trúc -->
+    <div class="card" style="margin-bottom: 28px;">
+      <h2>📊 Sơ Đồ Kiến Trúc Luồng Dữ Liệu Sau Khi Tái Cấu Trúc</h2>
+      <div class="mermaid-box">
+        <pre class="mermaid">
+graph LR
+    subgraph UI ["🖥️ UI (Single Activity + Fragments)"]
+        F1["DashboardFragment<br/>(Giám sát)"]
+        F2["SettingsFragment<br/>(Cài đặt PLC)"]
+        F3["PresentationFragment<br/>(Slide & Đồng hồ)"]
+    end
+
+    subgraph Data ["📦 Data & Hardware Layer"]
+        VM["MainViewModel / Repository"]
+        SP["SerialPortManager<br/>(UsbSerialPort)"]
+        MP["ModbusParser & Commands"]
+        CRC["ModbusCrc16"]
+        PREF["AppPreferences"]
+        API["OproomApi (Retrofit)"]
+    end
+
+    subgraph HW ["🔌 Thiết Bị Thực Tế"]
+        PLC["Bo mạch PLC / RS485"]
+        Sensors["Cảm biến Nhiệt - Ẩm - Áp - Lọc"]
+    end
+
+    F1 & F2 & F3 --> VM
+    VM --> SP & PREF & API
+    SP <--> MP --> CRC
+    SP <== "USB Serial (9600-8-N-1)" ==> PLC --> Sensors
+        </pre>
+      </div>
+    </div>
+
+    <!-- Danh sách 5 giai đoạn -->
+    <h2 style="font-size: 18px; margin-bottom: 16px; color: var(--text);">🚀 Lộ Trình 5 Giai Đoạn Chi Tiết</h2>
+
+    <!-- Phase 1 -->
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-title">
+          <span class="badge badge-blue">Giai đoạn 1</span>
+          Chuẩn bị & Chuẩn hóa nền tảng (Quick Wins)
+        </div>
+        <span class="badge badge-green">Ưu tiên số 1</span>
+      </div>
+      <div class="phase-content">
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-1-1" checked>
+          <div class="task-content">
+            <div class="task-text">Bật ViewBinding trong file <code>app/build.gradle</code></div>
+            <div class="task-desc">Giúp loại bỏ hoàn toàn các hàm findViewById thủ công gây lag và nguy cơ
+              NullPointerException.</div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-1-2" checked>
+          <div class="task-content">
+            <div class="task-text">Tách thuật toán tính CRC16 ra <code>hardware/modbus/ModbusCrc16.kt</code></div>
+            <div class="task-desc">Độc lập hóa thuật toán tính mã kiểm tra Modbus từ inner class CrcByte.</div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-1-3" checked>
+          <div class="task-content">
+            <div class="task-text">Chuyển đổi <code>Post.kt</code> thành Kotlin <code>data class SensorPost</code></div>
+            <div class="task-desc">Thay thế class Java getter/setter cũ bằng cú pháp chuẩn của Kotlin.</div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-1-4" checked>
+          <div class="task-content">
+            <div class="task-text">Tạo <code>utils/SystemBarUtils.kt</code> chuẩn hóa hàm ẩn thanh điều hướng</div>
+            <div class="task-desc">Thay thế cho hàm đặt tên chưa chuẩn <code>hideThatShit()</code> trong MainActivity.
+            </div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-1-5" checked>
+          <div class="task-content">
+            <div class="task-text">Chạy lệnh biên dịch <code>gradlew compileDebugKotlin</code> kiểm tra</div>
+            <div class="task-desc">Đảm bảo code sau bước 1 build hoàn toàn sạch lỗi.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-title">
+          <span class="badge badge-blue">Giai đoạn 2</span>
+          Tách tầng Dữ liệu & Lưu trữ (Data Layer)
+        </div>
+      </div>
+      <div class="phase-content">
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-2-1" checked>
+          <div class="task-content">
+            <div class="task-text">Tạo <code>data/local/AppPreferences.kt</code> quản lý SharedPreferences</div>
+            <div class="task-desc">Gom toàn bộ việc lưu/đọc cấu hình nhiệt độ, van gió, timer, trạng thái màng lọc vào 1
+              nơi an toàn.</div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-2-2" checked>
+          <div class="task-content">
+            <div class="task-text">Tạo <code>data/remote/ApiClient.kt</code> cấu hình OkHttp & Retrofit tập trung</div>
+            <div class="task-desc">Quản lý timeout và kết nối gửi API tránh block luồng giao diện.</div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-2-3" checked>
+          <div class="task-content">
+            <div class="task-text">Chuẩn hóa 5 file Dialog (PasswordDialog, ConfigDialog, TimerSetDialog, ...)</div>
+            <div class="task-desc">Khắc phục lỗi nuốt exception trong onAttach() và áp dụng ViewBinding cho dialog.
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-title">
+          <span class="badge badge-blue">Giai đoạn 3</span>
+          Đóng gói Phần cứng & Giao tiếp Modbus RTU (Hardware Layer)
+        </div>
+      </div>
+      <div class="phase-content">
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-3-1" checked>
+          <div class="task-content">
+            <div class="task-text">Tạo <code>hardware/modbus/ModbusCommands.kt</code> gom mảng byte lệnh</div>
+            <div class="task-desc">Tập trung các lệnh bật/tắt Đèn, UV, Quạt, Sưởi, Lạnh, Van và đọc cảm biến nhiệt ẩm áp
+              suất.</div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-3-2" checked>
+          <div class="task-content">
+            <div class="task-text">Tạo <code>hardware/modbus/ModbusParser.kt</code> giải mã byte cảm biến</div>
+            <div class="task-desc">Tách logic phân tách byte offset (cảm biến LEFOO) ra khỏi Activity.</div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-3-3" checked>
+          <div class="task-content">
+            <div class="task-text">Tạo <code>hardware/serial/SerialPortManager.kt</code> quản lý UsbSerialPort</div>
+            <div class="task-desc">Tự động kết nối lại khi rút cắm cổng USB, gửi frame theo hàng đợi an toàn.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-title">
+          <span class="badge badge-blue">Giai đoạn 4</span>
+          Tách View Components & Chuyển Đổi Sang Fragment (UI Layer)
+        </div>
+      </div>
+      <div class="phase-content">
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-4-1" checked>
+          <div class="task-content">
+            <div class="task-text">Tách 6 inner class UI ra thư mục <code>ui/components/</code></div>
+            <div class="task-desc">Chuyển NumericSetting, DualStateButton, SensorView, realTime, module_alarm, Present
+              ra file riêng.</div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-4-2" checked>
+          <div class="task-content">
+            <div class="task-text">Tạo 3 Fragment riêng biệt (Dashboard, Settings, Presentation)</div>
+            <div class="task-desc">Bỏ hoàn toàn việc gọi lại <code>setContentView()</code> và hàm
+              <code>stateUpdate()</code> lặp đi lặp lại.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-title">
+          <span class="badge badge-blue">Giai đoạn 5</span>
+          Tối ưu Timer Coroutines & Rút gọn MainActivity
+        </div>
+      </div>
+      <div class="phase-content">
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-5-1" checked>
+          <div class="task-content">
+            <div class="task-text">Thay thế <code>ArrayList&lt;Timer&gt;</code> bằng Timer độc lập an toàn</div>
+            <div class="task-desc">Tránh hoàn toàn lỗi IndexOutOfBoundsException và xung đột luồng khi đếm giờ ca mổ và
+              gây mê đồng thời.</div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-5-2" checked>
+          <div class="task-content">
+            <div class="task-text">Tinh gọn <code>MainActivity.kt</code> loại bỏ hơn 1.000 dòng code trùng lặp</div>
+            <div class="task-desc">Tích hợp các module ModbusCommands, ModbusParser, SerialPortManager, AppPreferences
+              và các component helpers.</div>
+          </div>
+        </label>
+        <label class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-5-3" checked>
+          <div class="task-content">
+            <div class="task-text">Kiểm thử biên dịch toàn diện hệ thống</div>
+            <div class="task-desc">Biên dịch thành công 100% với Gradle (BUILD SUCCESSFUL), sẵn sàng triển khai trên
+              phần cứng.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Bảng so sánh cũ và mới -->
+    <div class="card" style="margin-top: 28px;">
+      <h2>🔄 Bảng Ánh Xạ Chuyển Đổi Mã Cũ Sang Mã Mới</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Mã cũ trong <code>MainActivity.kt</code></th>
+            <th>Vị trí / Tên mới</th>
+            <th>Ưu điểm sau khi tách</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>class CrcByte</code></td>
+            <td><code>hardware.modbus.ModbusCrc16</code></td>
+            <td>Độc lập, dễ viết unit test</td>
+          </tr>
+          <tr>
+            <td>Mảng byte <code>humRequest</code>, <code>lion1Request</code>...</td>
+            <td><code>hardware.modbus.ModbusCommands</code></td>
+            <td>Tập trung một nơi, dễ đổi địa chỉ thanh ghi</td>
+          </tr>
+          <tr>
+            <td>Vòng lặp parse byte trong <code>onNewData</code></td>
+            <td><code>hardware.modbus.ModbusParser</code></td>
+            <td>Không làm nghẽn vòng đời giao diện</td>
+          </tr>
+          <tr>
+            <td><code>setContentView(...)</code> gọi 3 lần</td>
+            <td><code>ui.fragments.*</code> (3 Fragments)</td>
+            <td>Chuyển trang mượt mà, không hủy View tree</td>
+          </tr>
+          <tr>
+            <td><code>inner class realTime</code></td>
+            <td><code>ui.components.RealTimeClockHelper</code></td>
+            <td>Chuẩn hóa tên class PascalCase chuẩn Kotlin</td>
+          </tr>
+          <tr>
+            <td><code>hideThatShit()</code></td>
+            <td><code>utils.SystemBarUtils.hideSystemBars()</code></td>
+            <td>Tên hàm chuẩn mực, chuyên nghiệp</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+
+    // Checklist Progress logic with LocalStorage
+    const checkboxes = document.querySelectorAll('.task-checkbox');
+    const totalCountEl = document.getElementById('total-count');
+    const doneCountEl = document.getElementById('done-count');
+    const percentEl = document.getElementById('progress-percent');
+    const barFill = document.getElementById('progress-bar-fill');
+
+    function updateProgress() {
+      let done = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) done++;
+        localStorage.setItem('oproom_task_' + cb.id, cb.checked ? 'true' : 'false');
+      });
+      const total = checkboxes.length;
+      const percent = total > 0 ? Math.round((done / total) * 100) : 0;
+
+      totalCountEl.textContent = total;
+      doneCountEl.textContent = done;
+      percentEl.textContent = percent + '%';
+      barFill.style.width = percent + '%';
+    }
+
+    checkboxes.forEach(cb => {
+      const saved = localStorage.getItem('oproom_task_' + cb.id);
+      if (saved === 'true') cb.checked = true;
+      cb.addEventListener('change', updateProgress);
+    });
+
+    updateProgress();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+[2026-10-29 14:12:41.320] [INFO ] [OpRoom    ] ==================================================
+[2026-10-29 14:12:41.325] [INFO ] [OpRoom    ] Bảng điều khiển phòng mổ Sìn Hồ khởi động
+[2026-10-29 14:12:41.328] [INFO ] [OpRoom    ] Thư mục lưu log: /storage/emulated/0/Android/data/com.research.oproom/files/logs
+[2026-10-29 14:12:41.330] [INFO ] [OpRoom    ] ==================================================
+[2026-10-29 14:17:36.827] [INFO ] [DIEU_HUONG] Người dùng chuyển sang màn hình: Trang 1 (Cài đặt thông số - Settings)
+[2026-10-29 14:17:44.738] [INFO ] [BAO_MAT   ] Người dùng nhập mật khẩu: 'sendlog'
+[2026-10-29 14:18:02.176] [INFO ] [LOG_SENDER] Người dùng yêu cầu gửi log tới máy tính IP: '100.67.153.3'

@@ -1,0 +1,78 @@
+--------- beginning of main
+10-29 14:12:40.726 I/research.oproo( 3753): Late-enabling -Xcheck:jni
+10-29 14:12:40.771 I/research.oproo( 3753): Unquickening 12 vdex files!
+10-29 14:12:41.108 D/NetworkSecurityConfig( 3753): No Network Security Config specified, using platform default
+10-29 14:12:41.109 D/NetworkSecurityConfig( 3753): No Network Security Config specified, using platform default
+10-29 14:12:41.269 D/AppCompatDelegate( 3753): Checking for metadata for AppLocalesMetadataHolderService : Service not found
+10-29 14:12:41.311 I/OpRoom  ( 3753): ==================================================
+10-29 14:12:41.311 I/OpRoom  ( 3753): Bảng điều khiển phòng mổ Sìn Hồ khởi động
+10-29 14:12:41.311 I/OpRoom  ( 3753): Thư mục lưu log: /storage/emulated/0/Android/data/com.research.oproom/files/logs
+10-29 14:12:41.312 I/OpRoom  ( 3753): ==================================================
+10-29 14:12:41.320 I/OpRoom  ( 3753): Đã kích hoạt bắt toàn bộ Terminal vào: terminal_2026-10-29.txt
+10-29 14:12:41.359 W/research.oproo( 3753): Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (greylist, reflection, allowed)
+10-29 14:12:41.360 W/research.oproo( 3753): Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (greylist, reflection, allowed)
+10-29 14:12:41.441 D/UsbRequestJNI( 3753): init
+10-29 14:12:41.443 D/FtdiSerialPort( 3753): baud rate=9600, effective=9600, error=0.0%, value=0x4138, index=0x0000, divisor=312, subdivisor=4
+10-29 14:12:41.445 I/SerialPortManager( 3753): Kết nối USB Serial thành công: FT232R USB UART @ 9600 bps
+10-29 14:12:41.445 D/SerialConn( 3753): Trạng thái USB: true, Thiết bị: FT232R USB UART
+10-29 14:12:41.447 I/SerialInputOutputManager( 3753): Running ...
+10-29 14:12:42.311 I/mali_so ( 3753): [File] : hardware/arm/maliT760/driver/product/base/src/mali_base_kbase.c; [Line] : 876; [Func] : base_context_deal_with_version_affairs_rk_ext;
+10-29 14:12:42.311 I/mali_so ( 3753): arm_release_ver of this mali_so is 'r18p0-01rel0', rk_so_ver is '3@0'.
+10-29 14:12:42.326 D/mali_so ( 3753): [File] : hardware/arm/maliT760/driver/product/base/src/mali_base_kbase.c; [Line] : 881; [Func] : base_context_deal_with_version_affairs_rk_ext;
+10-29 14:12:42.326 D/mali_so ( 3753): current process is NOT sf, to bail out.
+10-29 14:12:42.348 D/mali_winsys( 3753): EGLint new_window_surface(egl_winsys_display *, void *, EGLSurface, EGLConfig, egl_winsys_surface **, egl_color_buffer_format *, EGLBoolean) returns 0x3000
+10-29 14:12:42.362 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:12:42.362 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:12:42.451 D/research.oproo( 3753): set stream to NULL
+10-29 14:12:42.477 I/chatty  ( 3753): uid=10125(com.research.oproom) RenderThread identical 10 lines
+10-29 14:12:42.479 D/research.oproo( 3753): set stream to NULL
+10-29 14:12:43.047 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:12:43.047 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:12:43.097 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:12:43.097 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:17:36.826 I/DIEU_HUONG( 3753): Người dùng chuyển sang màn hình: Trang 1 (Cài đặt thông số - Settings)
+10-29 14:17:36.904 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:36.919 I/chatty  ( 3753): uid=10125(com.research.oproom) RenderThread identical 4 lines
+10-29 14:17:36.923 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:39.001 D/mali_winsys( 3753): EGLint new_window_surface(egl_winsys_display *, void *, EGLSurface, EGLConfig, egl_winsys_surface **, egl_color_buffer_format *, EGLBoolean) returns 0x3000
+10-29 14:17:39.030 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:17:39.030 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:17:39.049 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:39.054 I/chatty  ( 3753): uid=10125(com.research.oproom) RenderThread identical 1 line
+10-29 14:17:39.062 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:39.069 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:39.073 I/chatty  ( 3753): uid=10125(com.research.oproom) RenderThread identical 1 line
+10-29 14:17:39.083 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:39.095 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:17:39.095 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:17:39.119 W/libEGL  ( 3753): EGLNativeWindowType 0xb400007685fb6530 disconnect failed
+10-29 14:17:39.120 D/mali_winsys( 3753): EGLint new_window_surface(egl_winsys_display *, void *, EGLSurface, EGLConfig, egl_winsys_surface **, egl_color_buffer_format *, EGLBoolean) returns 0x3000
+10-29 14:17:39.122 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:17:39.122 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:17:39.146 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:17:39.146 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:17:40.327 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:17:40.327 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:17:44.712 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:44.717 I/chatty  ( 3753): uid=10125(com.research.oproom) RenderThread identical 1 line
+10-29 14:17:44.725 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:44.738 I/BAO_MAT ( 3753): Người dùng nhập mật khẩu: 'sendlog'
+10-29 14:17:44.758 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:44.765 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:44.775 D/research.oproo( 3753): set stream to NULL
+10-29 14:17:44.780 W/libEGL  ( 3753): EGLNativeWindowType 0xb400007685fb6530 disconnect failed
+10-29 14:17:44.780 D/OpenGLRenderer( 3753): endAllActiveAnimators on 0xb400007605fa0220 (RippleDrawable) with handle 0xb400007525f9dd70
+10-29 14:17:44.916 D/mali_winsys( 3753): EGLint new_window_surface(egl_winsys_display *, void *, EGLSurface, EGLConfig, egl_winsys_surface **, egl_color_buffer_format *, EGLBoolean) returns 0x3000
+10-29 14:17:44.939 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:17:44.939 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:17:44.958 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:17:44.958 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:17:45.029 W/libEGL  ( 3753): EGLNativeWindowType 0xb40000768602fac0 disconnect failed
+10-29 14:17:45.030 D/mali_winsys( 3753): EGLint new_window_surface(egl_winsys_display *, void *, EGLSurface, EGLConfig, egl_winsys_surface **, egl_color_buffer_format *, EGLBoolean) returns 0x3000
+10-29 14:17:45.043 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:17:45.043 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:17:46.093 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:17:46.093 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:17:46.144 I/gralloc4( 3753): [File] : hardware/rockchip/libgralloc/midgard/src/core/mali_gralloc_formats.cpp; [Line] : 1816; [Func] : rk_gralloc_select_format;
+10-29 14:17:46.144 I/gralloc4( 3753): no_afbc_for_sf_client_layer is requested via prop
+10-29 14:18:02.175 I/LOG_SENDER( 3753): Người dùng yêu cầu gửi log tới máy tính IP: '100.67.153.3'

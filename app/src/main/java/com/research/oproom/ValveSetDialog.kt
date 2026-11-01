@@ -5,64 +5,66 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.SeekBar
-import android.widget.TextView
 import androidx.fragment.app.DialogFragment
+import com.research.oproom.databinding.DialogValveBinding
 
-class ValveSetDialog(var value: Int): DialogFragment() {
-    private lateinit var buttonCancel: Button
-    private lateinit var buttonOk: Button
-    lateinit var valve: SeekBar
-    lateinit var text: TextView
-    interface OnInputListener{
+class ValveSetDialog(var value: Int = 0) : DialogFragment() {
+
+    interface OnInputListener {
         fun sendValve(valve: Int)
     }
-    lateinit var onInputListener: OnInputListener
+
+    var onInputListener: OnInputListener? = null
+    private var _binding: DialogValveBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.dialog_valve, container, false)
-        buttonCancel = view.findViewById(R.id.buttonCancel_valve)
-        buttonOk = view.findViewById(R.id.buttonOK_valve)
-        valve = view.findViewById(R.id.seekBar)
-        text = view.findViewById(R.id.textView_valve)
-        valve.progress = value
-        text.text = value.toString()
-        buttonCancel.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                dialog?.dismiss()
-            }
-        })
-        buttonOk.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                onInputListener.sendValve(valve.progress)
-                dialog?.dismiss()
-            }
-        })
-        valve.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                text.text = progress.toString()
-                value = progress
-            }
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+    ): View {
+        _binding = DialogValveBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-            }
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            seekBar.progress = value
+            textViewValve.text = value.toString()
+            seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(sb: SeekBar?, progress: Int, fromUser: Boolean) {
+                    textViewValve.text = progress.toString()
+                    value = progress
+                }
 
+                override fun onStartTrackingTouch(sb: SeekBar?) {}
+
+                override fun onStopTrackingTouch(sb: SeekBar?) {}
+            })
+
+            buttonCancelValve.setOnClickListener {
+                dismiss()
             }
-        })
-        return view
+            buttonOKValve.setOnClickListener {
+                onInputListener?.sendValve(seekBar.progress)
+                dismiss()
+            }
+        }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        try {
-            onInputListener = activity as OnInputListener
-        }catch (e: ClassCastException){
-
+        if (context is OnInputListener) {
+            onInputListener = context
+        } else if (parentFragment is OnInputListener) {
+            onInputListener = parentFragment as OnInputListener
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
